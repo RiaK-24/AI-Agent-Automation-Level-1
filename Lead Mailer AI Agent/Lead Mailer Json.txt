@@ -3,13 +3,12 @@
   "nodes": [
     {
       "parameters": {
-        "formTitle": "Lead Mailer Form (Pract1)",
-        "formDescription": "Form to classify project budgets ",
+        "formTitle": "Lead Mailer Form",
         "formFields": {
           "values": [
             {
               "fieldLabel": "What is your name",
-              "placeholder": "Sony Man"
+              "placeholder": "Dory kay"
             },
             {
               "fieldLabel": "What is the project budget?",
@@ -52,12 +51,12 @@
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.2,
       "position": [
-        -620,
+        -720,
         60
       ],
-      "id": "070b9e93-2a7f-4300-b501-880f4fcc3aed",
+      "id": "f6f043b0-1839-4033-ace5-b31a1152d220",
       "name": "On form submission",
-      "webhookId": "c51b02c6-9a07-42b7-9022-1574f38e7a30"
+      "webhookId": "699807cd-0c2b-4a5d-9949-72bb8ff456e6"
     },
     {
       "parameters": {
@@ -144,42 +143,18 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -400,
-        60
+        -440,
+        80
       ],
-      "id": "bd1669fd-75c6-4278-b033-e259e59b0f46",
+      "id": "7c370c82-c8b0-4ab1-b79c-37220416c793",
       "name": "Switch"
     },
     {
       "parameters": {
-        "sendTo": "xyz@gmail.com",
-        "subject": "=New Automation Lead from {{ $json['What is your name'] }} ",
-        "message": "=Hey 808, You have a new lead!\n\nThey have a new project for {{ $json['What is your time frame?'] }}.\n\nTheir name is {{ $json['What is your name'] }}.\n\nTheir project budget is {{ $json['What is the project budget?'] }}.\n\nThey sent the email at {{ $json.submittedAt }}.",
-        "options": {
-          "appendAttribution": false
-        }
-      },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.1,
-      "position": [
-        -180,
-        60
-      ],
-      "id": "492217c7-9e97-4f9b-9d48-6d18ca0e7f3c",
-      "name": "Send LB",
-      "webhookId": "3aa83656-e5e2-4808-91d0-2cf32fa02e65",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "bgm0kU2drx7owtI3",
-          "name": "Gmail account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "sendTo": "xyz@gmail.com",
+        "sendTo": "test@gmail.com",
         "subject": "=New Automation Lead {{ $json['What is your name'] }} ",
-        "message": "=Hey 808, You have a new lead!\n\nThey have a new project for {{ $json['What is your time frame?'] }}.\nTheir name is {{ $json['What is your name'] }}.\nTheir project budget is {{ $json['What is the project budget?'] }}.\n\nThey sent the email at {{ $json.submittedAt }}.",
+        "emailType": "text",
+        "message": "=Hey dear, You have a new lead!\n\nThey have a new project for {{ $json['What is your time frame?'] }}.\nTheir name is {{ $json['What is your name'] }}.\nTheir project budget is {{ $json['What is the project budget?'] }}.\n\nThey sent the email at {{ $json.submittedAt }}.",
         "options": {
           "appendAttribution": false
         }
@@ -190,34 +165,9 @@
         -180,
         -140
       ],
-      "id": "70689ded-a61a-4bf6-9c16-b7fe100f45a0",
+      "id": "da2a6222-5cac-43c4-b4ac-7c55e1455a94",
       "name": "Send HB",
-      "webhookId": "3aa83656-e5e2-4808-91d0-2cf32fa02e65",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "bgm0kU2drx7owtI3",
-          "name": "Gmail account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "sendTo": "xyz@gmail.com",
-        "subject": "=New Automation Lead {{ $json['What is your name'] }} ",
-        "message": "=Hey 808, You have a new lead!\n\nThey have a new project for {{ $json['What is your time frame?'] }}.\nTheir name is {{ $json['What is your name'] }}.\nTheir project budget is {{ $json['What is the project budget?'] }}.\n\nThey sent the email at {{ $json.submittedAt }}.",
-        "options": {
-          "appendAttribution": false
-        }
-      },
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.1,
-      "position": [
-        -180,
-        260
-      ],
-      "id": "74ec2c6e-5175-4ae0-8595-d8712830ebf9",
-      "name": "Send MB",
-      "webhookId": "3aa83656-e5e2-4808-91d0-2cf32fa02e65",
+      "webhookId": "64b4a0b1-50d8-4c3d-8b13-2565ce51b17a",
       "credentials": {
         "gmailOAuth2": {
           "id": "bgm0kU2drx7owtI3",
@@ -239,15 +189,9 @@
         40,
         60
       ],
-      "id": "dec8051b-b7da-4e23-8915-d2295b3fbeeb",
+      "id": "23a7fa87-a517-4e1c-979c-0ecb62cbc9ad",
       "name": "LB Label",
-      "webhookId": "0b77f8f4-9b1b-4aef-9fa9-815148e619a6",
-      "credentials": {
-        "gmailOAuth2": {
-          "id": "bgm0kU2drx7owtI3",
-          "name": "Gmail account"
-        }
-      }
+      "webhookId": "01cdc6c2-22ea-45ea-8b32-a3c06aaaaf70"
     },
     {
       "parameters": {
@@ -263,9 +207,9 @@
         40,
         260
       ],
-      "id": "ebd964b6-d887-4243-9ac1-2437f671cdc8",
+      "id": "cd170b34-494a-497a-bb83-17d300133c39",
       "name": "MB Label",
-      "webhookId": "0b77f8f4-9b1b-4aef-9fa9-815148e619a6",
+      "webhookId": "09746b9c-ac54-422a-93fd-4d61403b015e",
       "credentials": {
         "gmailOAuth2": {
           "id": "bgm0kU2drx7owtI3",
@@ -287,15 +231,143 @@
         40,
         -140
       ],
-      "id": "f7834076-5a30-47d3-914a-6479579224c4",
+      "id": "64d6e98e-d437-4db6-8b88-e10205d0914b",
       "name": "HB Label",
-      "webhookId": "0b77f8f4-9b1b-4aef-9fa9-815148e619a6",
+      "webhookId": "94692a8c-8674-466b-b822-33efc9b0cd39",
       "credentials": {
         "gmailOAuth2": {
           "id": "bgm0kU2drx7owtI3",
           "name": "Gmail account"
         }
       }
+    },
+    {
+      "parameters": {
+        "sendTo": "test@gmail.com",
+        "subject": "=New Automation Lead {{ $json['What is your name'] }} ",
+        "emailType": "text",
+        "message": "=Hey dear, You have a new lead!\n\nThey have a new project for {{ $json['What is your time frame?'] }}.\nTheir name is {{ $json['What is your name'] }}.\nTheir project budget is {{ $json['What is the project budget?'] }}.\n\nThey sent the email at {{ $json.submittedAt }}.",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -180,
+        60
+      ],
+      "id": "1dfbe50b-79a3-4f1c-9618-77f14b3edb8d",
+      "name": "Send LB",
+      "webhookId": "64b4a0b1-50d8-4c3d-8b13-2565ce51b17a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "bgm0kU2drx7owtI3",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "test@gmail.com",
+        "subject": "=New Automation Lead {{ $json['What is your name'] }} ",
+        "emailType": "text",
+        "message": "=Hey dear, You have a new lead!\n\nThey have a new project for {{ $json['What is your time frame?'] }}.\nTheir name is {{ $json['What is your name'] }}.\nTheir project budget is {{ $json['What is the project budget?'] }}.\n\nThey sent the email at {{ $json.submittedAt }}.",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -180,
+        260
+      ],
+      "id": "51a3ccec-a727-4332-9f85-feaf156dd878",
+      "name": "Send MB",
+      "webhookId": "64b4a0b1-50d8-4c3d-8b13-2565ce51b17a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "bgm0kU2drx7owtI3",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "### 3) Send Emails to your inbox\n* Connect your gmail account using credentials. (this is a separate process)\n* Use the categories from the previous node to send emails.",
+        "height": 220,
+        "color": 4
+      },
+      "id": "2d64202b-c088-4f98-878b-479476e036c9",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -260,
+        -400
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### 4) Add Label Nodes\nLogin to your gmail inbox\n* Create a label with \"+\" icon\n* Change the color of your choice\n* In this option \"Label Names or IDs\" -> Select the category to match with the Classification Agent Node.",
+        "height": 180,
+        "width": 380,
+        "color": 4
+      },
+      "id": "6304a301-188b-4244-a100-1015a09fe3ff",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        40,
+        -360
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### 5) Add-on\n* You can add more category of your choice!",
+        "width": 220,
+        "color": 4
+      },
+      "id": "06772159-265b-44a3-965a-b56c00a63176",
+      "name": "Sticky Note5",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        280,
+        -80
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### 2) Set up classification rules\n* The submitted data is passed to a Switch node, which classifies the type of inquiry. ",
+        "width": 200,
+        "color": 4
+      },
+      "id": "13b8ffb9-f3bd-41cf-9ae6-545419584df0",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -480,
+        -120
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "### 1) Form Trigger node\n* A public-facing web form is created using the Form Trigger node. You can submit data such as name, email, and inquiry details. ",
+        "width": 200,
+        "color": 4
+      },
+      "id": "cec0c2ba-af35-4912-ab4e-58fd53d6066c",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -820,
+        -120
+      ],
+      "typeVersion": 1
     }
   ],
   "pinData": {},
@@ -336,6 +408,17 @@
         ]
       ]
     },
+    "Send HB": {
+      "main": [
+        [
+          {
+            "node": "HB Label",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Send MB": {
       "main": [
         [
@@ -357,28 +440,17 @@
           }
         ]
       ]
-    },
-    "Send HB": {
-      "main": [
-        [
-          {
-            "node": "HB Label",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "8a09b04d-8173-4561-b502-68af14ab73c8",
+  "versionId": "4194677a-6435-4339-a14c-5f0f91d14863",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "8bebc4a5e6b90e1bd3528a40f55368049a79cf36a6b2380d2061ab90aee418e0"
   },
-  "id": "FLLTVfCpCEPmuX45",
+  "id": "i1ajMoYHAS4WPToB",
   "tags": []
 }
