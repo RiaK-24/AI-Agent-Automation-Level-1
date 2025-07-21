@@ -14,8 +14,11 @@ This repository is designed for:
 Each agent in this repository includes:
 - **Agent Overview** – A brief explanation of what the agent does and how it works
 - **Workflow JSON File** – Ready-to-import n8n workflow to try it out yourself
-- **Documentation** – Two types:
+- **Documentation** – :
   - A **Workflow Doc** for setup, stack, and logic
-  - A **Learning Guide** for beginners, with conceptual walkthroughs
+ 
+## 🔹 AI Agent Workflows
+
+- **Lead Mailer Agent** – The Lead Mailer agent is designed to capture user-submitted data from a web form and route the information directly to your Gmail inbox. It uses classification logic via a Switch node to assign the appropriate email labels, making lead intake more organized. Although simple by design, this workflow is a great entry-level agent for learning n8n and automation basics.
 
 ---
