@@ -19,6 +19,6 @@ Each agent in this repository includes:
  
 ## 🔹 AI Agent Workflows
 
-- **[Lead Mailer Agent](https://github.com/RiaK-24/AI-Agent-Automation-Level-1/tree/main/Lead%20Mailer%20AI%20Agent)** – The Lead Mailer agent is designed to capture user-submitted data from a web form and route the information directly to your Gmail inbox. It uses classification logic via a Switch node to assign the appropriate email labels, making lead intake more organized. Although simple by design, this workflow is a great entry-level agent for learning n8n and automation basics.
+- **[Lead Mailer Agent](https://github.com/RiaK-24/AI-Agent-Automation-Level-1/tree/main/Lead%20Mailer%20AI%20Agent)** – The Lead Mailer agent is designed to capture user-submitted data from a web form and sends the information directly to your Gmail inbox. It uses classification logic via a Switch node in n8n to assign the appropriate email labels, making lead intake more organized. Although simple by design, this workflow is a great entry-level agent for learning n8n and automation basics.
 
 ---
