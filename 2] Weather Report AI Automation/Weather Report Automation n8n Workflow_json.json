@@ -1,0 +1,764 @@
+{
+  "name": "The Weather Reporter copy",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Location Selector",
+        "formDescription": "Select a unique location from the list",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Select a Location",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Toronto"
+                  },
+                  {
+                    "option": "Pune"
+                  },
+                  {
+                    "option": "Dubai"
+                  },
+                  {
+                    "option": "Iceland"
+                  },
+                  {
+                    "option": "Cape town"
+                  },
+                  {
+                    "option": "Japan"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        -1040,
+        600
+      ],
+      "id": "8e993eb1-783a-4fae-9ca6-9ddfedac43a4",
+      "name": "On form submission",
+      "webhookId": "1fc50c3c-b4b7-482b-b043-ecd08526ca55"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json['Select a Location'] }}",
+                    "rightValue": "Toronto",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "694dd68f-e4ef-4ee6-9749-16a7a458ce21"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Toronto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "b7088103-3742-4fb6-a40e-4c8f4d5cb450",
+                    "leftValue": "={{ $json['Select a Location'] }}",
+                    "rightValue": "Pune",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Pune"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7b4e3408-a5a2-48ed-b693-b038b5192994",
+                    "leftValue": "={{ $json['Select a Location'] }}",
+                    "rightValue": "Dubai",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Dubai"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "ae418572-61bc-4c2f-bdef-a0d30cf6cfda",
+                    "leftValue": "={{ $json['Select a Location'] }}",
+                    "rightValue": "Iceland",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Iceland"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d96a126b-9063-41f6-881a-61577666c1c1",
+                    "leftValue": "={{ $json['Select a Location'] }}",
+                    "rightValue": "Cape town",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cape town"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "42c2b71c-cdf3-4868-9a65-c934e6d7911c",
+                    "leftValue": "={{ $json['Select a Location'] }}",
+                    "rightValue": "Japan",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Japan"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -820,
+        540
+      ],
+      "id": "df8032a5-b75b-4913-87da-9ba365efc111",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "url": "=https://api.open-meteo.com/v1/forecast?latitude={{ $json.Laitude }}&longitude={{ $json.Longitude }}&hourly=temperature_2m",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -380,
+        600
+      ],
+      "id": "18afc55b-23c6-4fdb-b693-1debdc20cdcc",
+      "name": "Weather Pull"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the weather data\nconst weatherData = items[0].json;\n\n// Get today's date in ISO format (YYYY-MM-DD)\nconst today = new Date().toISOString().slice(0, 10);\n\n// Prepare result array\nconst todayTemps = [];\n\n// Loop through all time entries\nfor (let i = 0; i < weatherData.hourly.time.length; i++) {\n  const time = weatherData.hourly.time[i];\n  const temp = weatherData.hourly.temperature_2m[i];\n\n  // Check if the time starts with today's date\n  if (time.startsWith(today)) {\n    todayTemps.push(temp);\n  }\n}\n\n// Calculate min and max temperature for today\nconst low = Math.min(...todayTemps);\nconst high = Math.max(...todayTemps);\n\n// Return the result\nreturn [\n  {\n    json: {\n      date: today,\n      high_temperature: high,\n      low_temperature: low\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -160,
+        600
+      ],
+      "id": "e06ef82d-c0b5-4a6c-9c99-9a6c5c982a4f",
+      "name": "Temperature High and Low"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "app28uMT9CjrAYKoE",
+          "mode": "list",
+          "cachedResultName": "The weather center",
+          "cachedResultUrl": "https://airtable.com/app28uMT9CjrAYKoE"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblnYI4HqEM45xAXd",
+          "mode": "list",
+          "cachedResultName": "Table 1",
+          "cachedResultUrl": "https://airtable.com/app28uMT9CjrAYKoE/tblnYI4HqEM45xAXd"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "High (F)": "={{ 0 }}{{ $json.high_temperature }}",
+            "Low (F)": "={{ $json.low_temperature }}",
+            "Location": "={{ $('On form submission').item.json['Select a Location'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Location",
+              "displayName": "Location",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "High (F)",
+              "displayName": "High (F)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Low (F)",
+              "displayName": "Low (F)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Created Time",
+              "displayName": "Created Time",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        60,
+        600
+      ],
+      "id": "ea558b97-7bc2-43de-ab08-4da253b5c450",
+      "name": "Air table-Weather connection"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a198b28b-bb95-4f90-a666-ad9bb6fea196",
+              "name": "Laitude",
+              "value": "43.70",
+              "type": "string"
+            },
+            {
+              "id": "84b3759c-73ca-4b3b-ab42-857aec9998d2",
+              "name": "Longitude",
+              "value": "-79.39",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -600,
+        100
+      ],
+      "id": "555f5967-77c1-4a29-924d-58325f833c97",
+      "name": "Toronto Coordinates"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a198b28b-bb95-4f90-a666-ad9bb6fea196",
+              "name": "Laitude",
+              "value": "18.51",
+              "type": "string"
+            },
+            {
+              "id": "84b3759c-73ca-4b3b-ab42-857aec9998d2",
+              "name": "Longitude",
+              "value": "73.85",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -600,
+        300
+      ],
+      "id": "20471515-0b73-40dc-9995-7ae6910b698c",
+      "name": "Pune Coordinates"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a198b28b-bb95-4f90-a666-ad9bb6fea196",
+              "name": "Laitude",
+              "value": "25.07",
+              "type": "string"
+            },
+            {
+              "id": "84b3759c-73ca-4b3b-ab42-857aec9998d2",
+              "name": "Longitude",
+              "value": "55.30",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -600,
+        500
+      ],
+      "id": "ae739c9f-4525-4cc0-842a-2b08b989482e",
+      "name": "Dubai Coordinates"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a198b28b-bb95-4f90-a666-ad9bb6fea196",
+              "name": "Laitude",
+              "value": "65",
+              "type": "string"
+            },
+            {
+              "id": "84b3759c-73ca-4b3b-ab42-857aec9998d2",
+              "name": "Longitude",
+              "value": "-18",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -600,
+        700
+      ],
+      "id": "5f63683d-9161-4723-b286-cb2a04f2ba36",
+      "name": "Iceland Coordinates"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a198b28b-bb95-4f90-a666-ad9bb6fea196",
+              "name": "Laitude",
+              "value": "-33.92",
+              "type": "string"
+            },
+            {
+              "id": "84b3759c-73ca-4b3b-ab42-857aec9998d2",
+              "name": "Longitude",
+              "value": "18.42",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -600,
+        900
+      ],
+      "id": "387e287c-3540-4357-b4f6-e5d1f92d8da0",
+      "name": "Cape town Coordinates"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a198b28b-bb95-4f90-a666-ad9bb6fea196",
+              "name": "Laitude",
+              "value": "35.68",
+              "type": "string"
+            },
+            {
+              "id": "84b3759c-73ca-4b3b-ab42-857aec9998d2",
+              "name": "Longitude",
+              "value": "139.75",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -600,
+        1100
+      ],
+      "id": "c7356be7-b192-498d-bc7a-3718c6ca72fe",
+      "name": "Japan Coordinates"
+    },
+    {
+      "parameters": {
+        "content": "WebForm for Location selection\n1. Create a webform using this node\n2. Add the names of locations for which you need the weather details",
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1140,
+        420
+      ],
+      "typeVersion": 1,
+      "id": "50e52864-87cb-45e5-bbce-9d7f675ba6f5",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "Switch node for \n1. Checks the submitted location and forwards the flow to the correct branch based on match rules",
+        "height": 140,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -940,
+        860
+      ],
+      "typeVersion": 1,
+      "id": "0fa2dc16-1d4e-4efb-84b0-b1d9b96e53ad",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "Set Nodes for Coordinates\n1. Each branch sets the respective city’s latitude and longitude manually. ",
+        "height": 140,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -660,
+        1280
+      ],
+      "typeVersion": 1,
+      "id": "e9fb8314-2c50-4229-bf34-ff929d4eb426",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "Weather Pull (HTTP Request Node)\n1. Uses the latitude and longitude from the selected city to query Open-Meteo's API. ",
+        "height": 140,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -380,
+        420
+      ],
+      "typeVersion": 1,
+      "id": "7c88ea15-75f0-4899-8c98-6bd9502bfa7c",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "Temperature High and Low (Code Node)\n1. Parses the hourly temperature data to calculate today’s high and low.\n2. Json code used for extracting the high and Low tempreture",
+        "height": 180,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -220,
+        780
+      ],
+      "typeVersion": 1,
+      "id": "381f74dd-c7cb-4af3-99de-290480052de2",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "Airtable Connection (Node Deactivated)\n1. Saves the final output to Airtable:\n•Location\n•Date\n•High temperature\n•Low temperature\n",
+        "height": 180,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        400
+      ],
+      "typeVersion": 1,
+      "id": "20ae7001-2d05-4d32-bc41-d9fcb8be407a",
+      "name": "Sticky Note5"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Toronto Coordinates",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pune Coordinates",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Dubai Coordinates",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Iceland Coordinates",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cape town Coordinates",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Japan Coordinates",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Weather Pull": {
+      "main": [
+        [
+          {
+            "node": "Temperature High and Low",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Temperature High and Low": {
+      "main": [
+        [
+          {
+            "node": "Air table-Weather connection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Toronto Coordinates": {
+      "main": [
+        [
+          {
+            "node": "Weather Pull",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pune Coordinates": {
+      "main": [
+        [
+          {
+            "node": "Weather Pull",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dubai Coordinates": {
+      "main": [
+        [
+          {
+            "node": "Weather Pull",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Iceland Coordinates": {
+      "main": [
+        [
+          {
+            "node": "Weather Pull",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cape town Coordinates": {
+      "main": [
+        [
+          {
+            "node": "Weather Pull",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Japan Coordinates": {
+      "main": [
+        [
+          {
+            "node": "Weather Pull",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "2016aaf1-6aa1-472a-accf-82d1beab1dae",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8bebc4a5e6b90e1bd3528a40f55368049a79cf36a6b2380d2061ab90aee418e0"
+  },
+  "id": "YclAtXVQq0AG0umB",
+  "tags": [
+    {
+      "createdAt": "2025-07-21T21:16:43.861Z",
+      "updatedAt": "2025-07-21T21:16:43.861Z",
+      "id": "XQ4Y3NF3WhbSOlPX",
+      "name": "Practice"
+    }
+  ]
+}
