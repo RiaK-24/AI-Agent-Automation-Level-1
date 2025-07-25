@@ -23,5 +23,5 @@ Each agent in this repository includes:
 
 ## 🔹 Weather Report AI Automation
 
-- **[Weather Report AI Automation](https://github.com/RiaK-24/AI-Agent-Automation-Level-1/tree/main/2%5D%20Weather%20Report%20AI%20Automation) is designed to dynamically extract weather data (temperature highs and lows) for one of several predefined cities based on a form submission. It then stores this data along with the submitted location in an Airtable database.
+- **[Weather Report AI Automation](https://github.com/RiaK-24/AI-Agent-Automation-Level-1/tree/main/2%5D%20Weather%20Report%20AI%20Automation)** is designed to dynamically extract weather data (temperature highs and lows) for one of several predefined cities based on a form submission. It then stores this data along with the submitted location in an Airtable database.
 ---
