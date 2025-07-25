@@ -1,0 +1,34 @@
+// Get the weather data
+const weatherData = items[0].json;
+
+// Get today's date in ISO format (YYYY-MM-DD)
+const today = new Date().toISOString().slice(0, 10);
+
+// Prepare result array
+const todayTemps = [];
+
+// Loop through all time entries
+for (let i = 0; i < weatherData.hourly.time.length; i++) {
+  const time = weatherData.hourly.time[i];
+  const temp = weatherData.hourly.temperature_2m[i];
+
+  // Check if the time starts with today's date
+  if (time.startsWith(today)) {
+    todayTemps.push(temp);
+  }
+}
+
+// Calculate min and max temperature for today
+const low = Math.min(...todayTemps);
+const high = Math.max(...todayTemps);
+
+// Return the result
+return [
+  {
+    json: {
+      date: today,
+      high_temperature: high,
+      low_temperature: low
+    }
+  }
+];
